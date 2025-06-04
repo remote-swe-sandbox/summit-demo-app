@@ -15,14 +15,14 @@ export const { runWithAmplifyServerContext, createAuthRouteHandlers } = createSe
   config: {
     Auth: {
       Cognito: {
-        userPoolId: process.env.USER_POOL_ID!,
-        userPoolClientId: process.env.USER_POOL_CLIENT_ID!,
+        userPoolId: process.env.USER_POOL_ID || 'mock-user-pool-id',
+        userPoolClientId: process.env.USER_POOL_CLIENT_ID || 'mock-user-pool-client-id',
         loginWith: {
           oauth: {
-            redirectSignIn: [`${process.env.AMPLIFY_APP_ORIGIN!}/api/auth/sign-in-callback`],
-            redirectSignOut: [`${process.env.AMPLIFY_APP_ORIGIN!}/api/auth/sign-out-callback`],
+            redirectSignIn: [`${process.env.AMPLIFY_APP_ORIGIN || 'http://localhost:3000'}/api/auth/sign-in-callback`],
+            redirectSignOut: [`${process.env.AMPLIFY_APP_ORIGIN || 'http://localhost:3000'}/api/auth/sign-out-callback`],
             responseType: 'code',
-            domain: process.env.COGNITO_DOMAIN!,
+            domain: process.env.COGNITO_DOMAIN || 'mock-cognito-domain',
             scopes: ['profile', 'openid', 'aws.cognito.signin.user.admin'],
           },
         },
