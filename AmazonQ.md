@@ -33,16 +33,6 @@ This file provides important information about the Serverless Full Stack WebApp 
    NEXT_PUBLIC_AWS_REGION="us-west-2"
    ASYNC_JOB_HANDLER_ARN=""
    ENABLE_MOCK_AUTH=true  # Add this line to enable mock auth
-
-   # Database connection information
-   DATABASE_HOST=localhost
-   DATABASE_USER=root
-   DATABASE_PASSWORD=password
-   DATABASE_NAME=sample
-   DATABASE_PORT=5432
-   DATABASE_ENGINE=postgres
-   DATABASE_OPTION=''
-   DATABASE_URL="${DATABASE_ENGINE}://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}${DATABASE_OPTION}"
    ```
 
 5. **Initialize the database**:
