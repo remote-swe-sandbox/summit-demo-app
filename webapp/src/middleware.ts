@@ -5,7 +5,7 @@ import { runWithAmplifyServerContext } from '@/lib/amplifyServerUtils';
 
 export async function middleware(request: NextRequest) {
   const response = NextResponse.next();
-  
+
   // 開発環境でモック認証が有効な場合は認証をスキップ
   if (process.env.NODE_ENV === 'development' && process.env.ENABLE_MOCK_AUTH === 'true') {
     return response;

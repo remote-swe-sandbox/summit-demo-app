@@ -37,7 +37,7 @@ export const authActionClient = actionClient.use(async ({ next }) => {
       update: {},
       create: { id: MOCK_USER.id },
     });
-    
+
     console.log('Using mock authentication for server action:', MOCK_USER.id);
     return next({ ctx: { userId: user.id } });
   }
