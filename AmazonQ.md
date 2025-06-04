@@ -2,6 +2,83 @@
 
 This file provides important information about the Serverless Full Stack WebApp Starter Kit repository. AI agent references this to support its work on this project.
 
+## Local Development with Mock Authentication
+
+### Setup
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/remote-swe-sandbox/summit-demo-app.git
+   cd summit-demo-app
+   ```
+
+2. **Start the database**:
+   ```bash
+   docker compose up -d
+   ```
+
+3. **Set up the environment variables**:
+   ```bash
+   cd webapp
+   cp .env.local.example .env.local
+   ```
+
+4. **Edit `.env.local` to enable mock authentication**:
+   ```
+   COGNITO_DOMAIN=auth.example.com
+   AMPLIFY_APP_ORIGIN=http://localhost:3000
+   USER_POOL_CLIENT_ID=dummy
+   USER_POOL_ID=us-west-2_dummy
+   NEXT_PUBLIC_EVENT_HTTP_ENDPOINT=""
+   NEXT_PUBLIC_AWS_REGION="us-west-2"
+   ASYNC_JOB_HANDLER_ARN=""
+   ENABLE_MOCK_AUTH=true  # Add this line to enable mock auth
+
+   # Database connection information
+   DATABASE_HOST=localhost
+   DATABASE_USER=root
+   DATABASE_PASSWORD=password
+   DATABASE_NAME=sample
+   DATABASE_PORT=5432
+   DATABASE_ENGINE=postgres
+   DATABASE_OPTION=''
+   DATABASE_URL="${DATABASE_ENGINE}://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}${DATABASE_OPTION}"
+   ```
+
+5. **Initialize the database**:
+   ```bash
+   npx prisma db push
+   ```
+
+6. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+7. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
+
+8. **Access the application**:
+   Open [http://localhost:3000](http://localhost:3000) in your browser. With mock authentication enabled, you'll be automatically logged in as a mock user.
+
+### Mock Authentication Details
+
+- Mock user ID: `mock-user-id`
+- Mock email: `mock-user@example.com`
+- The user will be automatically created in the database if it doesn't exist
+
+### Cleanup
+
+When you're done, shut down the services:
+
+```bash
+# Stop Next.js server (Ctrl+C in the terminal)
+# Stop Docker containers
+cd .. && docker compose down
+```
+
 ## Project Overview
 
 This project is a full stack webapp starter kit leveraging AWS serverless services, featuring:
