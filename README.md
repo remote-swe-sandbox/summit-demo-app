@@ -3,6 +3,8 @@
 
 This is a full stack webapp kit for starters who want to leverage the power of AWS serverless services!
 
+This is a sample line added for testing purposes.
+
 Features include:
 
 * Next.js App Router on AWS Lambda
